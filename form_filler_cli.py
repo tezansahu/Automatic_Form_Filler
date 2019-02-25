@@ -65,12 +65,12 @@ def main(args):
     est_time = avg_delay * num_entries  # in s
 
     # Print the initial stats of the process
-    print("------------------------------------------------------")
+    print("----------------------------------------------------------------")
     if est_time > 60:
-        print("Total Entries: ", num_entries, "\tEstimated time of Completion: ", est_time/60, " min")
+        print("Total Entries:", num_entries, "\tEstimated time of Completion:", est_time/60, "min")
     else:
-        print("Total Entries: ", num_entries, "\tEstimated time of Completion: ", est_time, " s")
-    print("------------------------------------------------------")
+        print("Total Entries:", num_entries, "\tEstimated time of Completion:", est_time, "s")
+    print("----------------------------------------------------------------")
 
 
     # Get the details of Form Questions and their corresponding IDs
@@ -96,27 +96,27 @@ def main(args):
                     if k.lower() == col.lower():
                         form_data[fields[k]] = df.iloc[i][col]
         except Exception as e:
-            print("Entry ", i, ": "+ str(e))
+            print("Entry", i, ": "+ str(e))
             interrupt()
             
         response = requests.post(url.replace('/viewform', '/formResponse'), data=form_data, headers=user_agent)
         
         # Check if response of submission is successful
         if str(response) != "<Response [200]>":
-            print("Entry ", i, "NOT submitted!")
+            print("Entry", i, "NOT submitted! Please check CSV File Headers and Submission Enabling in the form")
             interrupt()
             
         est_time -= avg_delay
         if est_time > 60:
-            print("Entry ", i, "submitted \tEstimated time of Completion: ", est_time/60, " min")
+            print("Entry", i, "submitted \tEstimated time of Completion:", est_time/60, "min")
         else:
-            print("Entry ", i, "submitted \tEstimated time of Completion: ", est_time, " s")
+            print("Entry", i, "submitted \tEstimated time of Completion:", est_time, "s")
 
         if i != args.start_index + num_entries-1:
             delay = random.randint(args.min_delay, args.max_delay+1)
             time.sleep(delay)
     
-    print("------------------------------------------------------")
+    print("----------------------------------------------------------------")
     print("All entries submitted successfully!!!")
     
 # Receive arguments while running command on terminal
