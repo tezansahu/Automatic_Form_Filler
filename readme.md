@@ -15,7 +15,7 @@ $ pip3 install -r requirements.txt
 ```
 3. Now, you are ready to use the command line tool by typing the following command:
 ```console
-$ python3 form_filler_cli --form-url <URL_of_Google_Form> --csv-input <Input_CSV_file_name> --start-index <Index_of_CSV_file_to_start> --num-entries <Number_of_entries_to_be_submitted> --min-delay <Minimum_delay_time_between_2_POST_requests> --max-delay <Maximum_delay_time_between_2_POST_requests>
+$ python3 form_filler_cli.py --form-url <URL_of_Google_Form> --csv-input <Input_CSV_file_name> --start-index <Index_of_CSV_file_to_start> --num-entries <Number_of_entries_to_be_submitted> --min-delay <Minimum_delay_time_between_2_POST_requests> --max-delay <Maximum_delay_time_between_2_POST_requests>
 ```
 
 ## Default Values of Parameters:

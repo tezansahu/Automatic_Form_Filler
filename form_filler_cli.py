@@ -93,7 +93,7 @@ def main(args):
         try:
             for k in fields.keys():
                 for col in df.columns:
-                    if k.lower() == col.lower():
+                    if k.lower().strip() == col.lower().strip():
                         form_data[fields[k]] = df.iloc[i][col]
         except Exception as e:
             print("Entry", i, ": "+ str(e))
